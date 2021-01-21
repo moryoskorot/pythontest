@@ -30,12 +30,17 @@ import sys
 csv_data = []
 
 
-
-# receives one parameter which is the path to proceed on
+# a function that receives a path , and lists everything under it recursively
 def rec_lister(target_path):
+  # reading the ls results
+  ls_results = os.popen( 'ls "{}"'.format(target_path))
+  # converting the bulk 'file' to a list of entries
+  ls_results = ls_results.readlines()
+  for i in ls_results:
+    csv_data.append("{},{},{}".format(len(csv_data), "/".join(target_path,i), os.popen("md5sum {}".format(i) ) )
   if( os.path.isdir(target_path)):
-    print("Tomatoe sauce")
-
+    print("sauce")
+   
 
 
 
@@ -53,7 +58,6 @@ csv_file = open("rec_csv.csv", 'w')
 
 if __name__ == "__main__":
   rec_lister(target_folder)  
- 
   csv_file.writelines(csv_data)
   csv_file.close()
-  print("Procedure finished")
+  print("Done...")
