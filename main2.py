@@ -1,5 +1,6 @@
 import os
 import sys
+from checksumdir import dirhash
 
 #####
 # Recursive File lister.
@@ -42,7 +43,7 @@ def rec_lister(target_path):
     md5hash = os.popen3('md5sum "'+object_path+'"') # i am using popen3 to eliminate stderr output
    
     if( md5hash[2].read().split(" ")[-1].endswith("directory\n") ):
-      md5hash = "Directory"
+      md5hash = dirhash(object_path, 'md5')
     elif(type(md5hash[1]) == file):
       md5hash = md5hash[1].read().split(" ")[0]
     else:
