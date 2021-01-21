@@ -48,7 +48,8 @@ def rec_lister(target_path):
     else:
       md5hash = "ERROR"
     csv_data.append(current_data_entry+", "+object_path+", "+md5hash+"\n")
-   
+    if( os.path.isdir(object_path)):
+      rec_lister(object_path)
 
 
 
