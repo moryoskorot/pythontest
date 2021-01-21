@@ -1,0 +1,45 @@
+1, ./dir1 , e70b20b8340b8d33e25b1a68d8bea4c5
+2, ./dir1/file , f6c42c9738ef71b553fe8773078c553d
+3, ./dir1/oi , 4c39215ed8d4d4c8e9a58957ec3adb67
+4, ./dir1/oi/aa , 13a515a8b8d62a600b5680b337dd9a00
+5, ./dir1/oi/aaa , c11d4f18ef25032db3596081a07969ce
+6, ./dir1/oi/aaaa , 13135d99fab4b7b5fc2c556362318e48
+7, ./dir1/oi/e , b4dc281441a6fa1ac34bda2484c5416a
+8, ./dir1/oi/q , ce5784f6f18c670674b5f2fc3e3bc6b6
+9, ./dir1/oi/r , b74512aa7f187753ed44d3413e81d357
+10, ./dir1/oi/sss , 48561ed4e00b7e9393acbdc4aff47155
+11, ./dir1/oi/sss/aakk , b26c90d6f00a817f5963f3543a5b0e55
+12, ./dir1/oi/sss/k , 329c9f6777997b7b49f4f5990af2d949
+13, ./dir1/oi/sss/ka , 6592e168602e0487d0a9a1fe73e65eda
+14, ./dir1/oi/sss/kk , 63e301131c5deae072ab60de67e7bd7d
+15, ./dir1/oi/sss/kkaa , 84bba91dc70c2e54fcdc936272f9a03f
+16, ./dir1/oi/t , b06699021aa271c72217d22362d1218b
+17, ./dir1/oi/vei , d41d8cd98f00b204e9800998ecf8427e
+18, ./dir1/oi/w , 1798bb0a8af0fecc4d13ae240ef9779a
+19, ./dir1/oi/y , aeb6bfe834e4b01d6ae527819cc7d790
+20, ./dir1/q , 91adccf2625b3811b9eb3d972b1fc5ee
+21, ./dir1/r , 95a8319c8c758a126f72c1aa7f7f93b6
+22, ./dir1/ty , dc31edb8e091015b93ac55af3c22f4b2
+23, ./dir1/we , 8400339b3aa1095ab1f9734041b54abc
+24, ./dir1/yu , b099ac0e1b196513c1c258dc4e535780
+25, ./dir 2 , 74be16979710d4c4e7c6647856088456
+26, ./dir 2/lol , d41d8cd98f00b204e9800998ecf8427e
+27, ./dir 2/lol2 , d41d8cd98f00b204e9800998ecf8427e
+28, ./dir 2/lol.txt , 505ef580e5fafb262534b26dfc6a57be
+29, ./dirthree , d41d8cd98f00b204e9800998ecf8427e
+30, ./dirty , d41d8cd98f00b204e9800998ecf8427e
+31, ./i_am_a_dir , d41d8cd98f00b204e9800998ecf8427e
+32, ./link to dir md5 , 1531aa62d28cd69b89ee486cd2ed2bbe
+33, ./main2.py , 9349e559bc9e6258470dbbf80258cd40
+34, ./main.py , e0f8fac1a417885ba84723d81181b12a
+35, ./main_TEST.py , 8006553039d2edb3d9b19407fb299708
+36, ./md5read.py , 44ff05dbd059bdcc217ee41d43dbb4bb
+37, ./not_dir.txt , dee0391b10b43ee8bf428fa9b70aff05
+38, ./one , f159355f54bfc24545d67b4be43af139
+39, ./rec_csv2.csv , 92607862ad1a67983939f64b82dbb9a7
+40, ./rec_csv.csv , bbddd298a24f61367f6a4bf0a140adc7
+41, ./rec_csvTEST.csv , 8511bc549f50a96d752d5bfa0fb5d172
+42, ./requirements.txt , f978e4b03ae4011bec669257fb8e161b
+43, ./spaced dir , d41d8cd98f00b204e9800998ecf8427e
+44, ./three , a385fafdfc8aee6038c8d4e1dc6fd0bb
+45, ./two , dd499e606c52df98f4457044f6ef5fd4
