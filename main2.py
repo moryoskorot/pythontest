@@ -1,6 +1,7 @@
 import os
 import sys
-from checksumdir import dirhash
+from checksumdir import dirhash #for directory hash
+import hashlib # for file hash
 
 #####
 # Recursive File lister.
@@ -40,14 +41,12 @@ def rec_lister(target_path):
   for i in ls_results:
     current_data_entry = str(len(csv_data)+1)
     object_path = target_path+"/"+i[:-1]
-    md5hash = os.popen3('md5sum "'+object_path+'"') # i am using popen3 to eliminate stderr output
-   
-    if( md5hash[2].read().split(" ")[-1].endswith("directory\n") ):
-      md5hash = dirhash(object_path, 'md5')
-    elif(type(md5hash[1]) == file):
-      md5hash = md5hash[1].read().split(" ")[0]
+    if (os.path.isdir(object_path) == True):
+      md5hash = dirhash(object_path , 'md5')
     else:
-      md5hash = "ERROR"
+      md5hash = hashlib.md5(object_path).hexdigest()
+      
+
     csv_data.append(current_data_entry+", "+object_path+" , "+md5hash+"\n")
     if( os.path.isdir(object_path)):
       rec_lister(object_path)
@@ -62,7 +61,7 @@ if not os.path.isdir(target_folder): #testing to see if received argument is in 
   exit() # And exit the program!
 
 # since we know for sure we have a green light to start, we are going to create a csv file.
-csv_file = open("rec_csv.csv", 'w')
+csv_file = open("rec_csv2.csv", 'w')
 
 
 
