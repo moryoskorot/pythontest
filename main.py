@@ -37,7 +37,12 @@ def rec_lister(target_path):
   # converting the bulk 'file' to a list of entries
   ls_results = ls_results.readlines()
   for i in ls_results:
-    csv_data.append("{},{},{}".format(len(csv_data), "/".join(target_path,i), os.popen("md5sum {}".format(i) ) )
+    current_data_entry = str(len(csv_data)+1)
+    object_path = target_path+"/"+i[:-1]
+    md5hash = os.system('md5sum "'+object_path+'"')
+    #if md5hash == "md5sum:":
+    #  md5hash = "DIRECTORY"
+    #csv_data.append(current_data_entry+","+object_path+","+md5hash)
   if( os.path.isdir(target_path)):
     print("sauce")
    
