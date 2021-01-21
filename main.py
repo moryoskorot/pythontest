@@ -39,12 +39,15 @@ def rec_lister(target_path):
   for i in ls_results:
     current_data_entry = str(len(csv_data)+1)
     object_path = target_path+"/"+i[:-1]
-    md5hash = os.system('md5sum "'+object_path+'"')
-    #if md5hash == "md5sum:":
-    #  md5hash = "DIRECTORY"
-    #csv_data.append(current_data_entry+","+object_path+","+md5hash)
-  if( os.path.isdir(target_path)):
-    print("sauce")
+    md5hash = os.popen3('md5sum "'+object_path+'"') # i am using popen3 to eliminate stderr output
+   
+    if( md5hash[2].read().split(" ")[-1].endswith("directory\n") ):
+      md5hash = "Directory"
+    elif(type(md5hash[1]) == file):
+      md5hash = md5hash[1].read().split(" ")[0]
+    else:
+      md5hash = "ERROR"
+    csv_data.append(current_data_entry+", "+object_path+", "+md5hash+"\n")
    
 
 
