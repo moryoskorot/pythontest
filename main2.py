@@ -11,7 +11,7 @@ import hashlib # for file hash
 #####
 
 # for the sake of testing i found setting an alias to 'python main.py' very effective
-
+#adding a comment to test
 
 # some functions  i grabbed from the internet
 #
