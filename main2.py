@@ -32,6 +32,17 @@ import hashlib # for file hash
 csv_data = []
 
 
+def my_get_md5hash(object_path):
+  try: # it checks to see if the target is a dir or a file
+    if (os.path.isdir(object_path) == True):
+      return dirhash(object_path , 'md5') #returns a directory md5
+    else:
+      return hashlib.md5(object_path).hexdigest() #returns a file md5
+  except:
+    return( "Skipped due to error") #since it sometimes errors i want it to try catch.
+      
+
+
 # a function that receives a path , and lists everything under it recursively
 def rec_lister(target_path):
   # reading the ls results
@@ -41,11 +52,7 @@ def rec_lister(target_path):
   for i in ls_results:
     current_data_entry = str(len(csv_data)+1)
     object_path = target_path+"/"+i[:-1]
-    if (os.path.isdir(object_path) == True):
-      md5hash = dirhash(object_path , 'md5')
-    else:
-      md5hash = hashlib.md5(object_path).hexdigest()
-      
+    md5hash = my_get_md5hash(object_path)  
 
     csv_data.append(current_data_entry+", "+object_path+" , "+md5hash+"\n")
     if( os.path.isdir(object_path)):
