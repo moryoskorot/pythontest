@@ -48,10 +48,10 @@ def my_get_md5hash(object_path):
       # as nice as it was, it gave me trouble on some folders like /proc/1/cwd/proc/1/cwd/dev
       #return dirhash(object_path , 'md5') #returns a directory md5 # switched to using a different one
       #returned to using the popen i used for files for the directories since the dirhashes get stuck on some special folders
-      popen_stdin,popen_stdout,popen_stderr= os.popen3('tar -cf - "'+object_path+'" | md5sum')
+      popen_stdin,popen_stdout,popen_stderr= os.popen3('timeout 12s tar -cf - "'+object_path+'" | md5sum')
       popen_stdout = popen_stdout.read().split(" ")[0]
       popen_stderr = popen_stderr.read()
-      if popen_stderr.__contains__("Premission denied"):
+      if popen_stderr.__contains__("denied") :
         return "Premission denied"
       elif popen_stderr.__contains__("changed as we read it"):
         return "changed while was read"
@@ -67,6 +67,8 @@ def my_get_md5hash(object_path):
 
 # a function that receives a path , and lists everything under it recursively
 def rec_lister(target_path):
+  #not the most efficient, but brought mt trouble
+  target_path = target_path.replace('//','/')
   # reading the ls results
   ls_results = os.popen( 'ls "{}"'.format(target_path))
   # converting the bulk 'file' to a list of entries
@@ -75,7 +77,10 @@ def rec_lister(target_path):
     global current_data_entry
     current_data_entry += 1
     csv_data.append("")
-    object_path = target_path+"/"+i[:-1]
+    if target_path != '/':
+      object_path = target_path+"/"+i[:-1]
+    else:
+      object_path = "/" + i[:-1]
     print(str(current_data_entry)+"     "+object_path+"    "+str(datetime.now()) )
     md5hash = my_get_md5hash(object_path)  
     
@@ -96,10 +101,13 @@ if not os.path.isdir(target_folder): #testing to see if received argument is in 
   print("Specified argument is not an existing folder") # if its not , print it out to the user
   exit() # And exit the program!
 
+
 # since we know for sure we have a green light to start, we are going to create a csv file.
 csv_file = open("rec_csv2.csv", 'w').close() # EMPTIES THE FILE
 csv_file = open("rec_csv2.csv", 'a') #starts writing into it (with append)
 
+while target_folder.__contains__('//'):
+  target_folder = target_folder.replace('//','/')
 
 if __name__ == "__main__":
   rec_lister(target_folder)  
