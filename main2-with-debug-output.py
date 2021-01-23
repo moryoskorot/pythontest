@@ -45,7 +45,20 @@ current_data_entry = 0
 def my_get_md5hash(object_path):
   try: # it checks to see if the target is a dir or a file
     if (os.path.isdir(object_path) == True):
-      return dirhash(object_path , 'md5') #returns a directory md5 # switched to using a different one
+      # as nice as it was, it gave me trouble on some folders like /proc/1/cwd/proc/1/cwd/dev
+      #return dirhash(object_path , 'md5') #returns a directory md5 # switched to using a different one
+      #returned to using the popen i used for files for the directories since the dirhashes get stuck on some special folders
+      popen_stdin,popen_stdout,popen_stderr= os.popen3('tar -cf - "'+object_path+'" | md5sum')
+      popen_stdout = popen_stdout.read().split(" ")[0]
+      popen_stderr = popen_stderr.read()
+      if popen_stderr.__contains__("Premission denied"):
+        return "Premission denied"
+      elif popen_stderr.__contains__("changed as we read it"):
+        return "changed while was read"
+      else:
+        return popen_stdout
+    elif os.path.islink(object_path): # unfortunately i had to catch link because of the program jamming on /proc//1/cwd/proc , read online a way to avoid these is to avoid links
+      return "Is a link" 
     else:
       return hashlib.md5(object_path).hexdigest() #returns a file md5
   except:
@@ -71,7 +84,7 @@ def rec_lister(target_path):
     #csv_data.append(current_data_entry+", "+object_path+" , "+md5hash+"\n")
     #switched to writing to a line instead of working on a list which (After checking 'ls -R var |wc -l' figured out some of these will contain more then 30k-40k list entries
     csv_file.write(str(current_data_entry)+", "+object_path+" , "+md5hash+"\n")
-    if( os.path.isdir(object_path)):
+    if( os.path.isdir(object_path) and not os.path.islink(object_path)):
       rec_lister(object_path)
 
 
