@@ -70,7 +70,7 @@ def rec_lister(target_path):
   #not the most efficient, but brought mt trouble
   target_path = target_path.replace('//','/')
   # reading the ls results
-  ls_results = os.popen( 'ls "{}"'.format(target_path))
+  ls_stdin,ls_results,ls_stderr = os.popen3( 'ls "{}"'.format(target_path))
   # converting the bulk 'file' to a list of entries
   ls_results = ls_results.readlines()
   for i in ls_results:
@@ -81,7 +81,8 @@ def rec_lister(target_path):
       object_path = target_path+"/"+i[:-1]
     else:
       object_path = "/" + i[:-1]
-    print(str(current_data_entry)+"     "+object_path+"    "+str(datetime.now()) )
+    #debug line
+    #print(str(current_data_entry)+"     "+object_path+"    "+str(datetime.now()) )
     md5hash = my_get_md5hash(object_path)  
     
 
