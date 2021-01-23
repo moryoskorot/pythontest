@@ -83,6 +83,7 @@ while target_folder.__contains__('//'): # to avoid things like ///home//////root
   target_folder = target_folder.replace('//','/')
 
 if __name__ == "__main__":
+  print("This might take a while depending on your target...")
   rec_lister(target_folder)  
   # going to change the way the program works , im going to writeline instead of lines for each csv entry
   csv_file.close()
