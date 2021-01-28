@@ -1,4 +1,4 @@
-#!/bin/python2.7
+#!/bin/python3
 import os
 import sys
 
@@ -77,8 +77,8 @@ if not os.path.isdir(target_folder): #testing to see if received argument is in 
 
 
 # since we know for sure we have a green light to start, we are going to create a csv file.
-csv_file = open("rec_csv2.csv", 'w').close() # FLISHINGA THE TARGET FILE
-csv_file = open("rec_csv2.csv", 'a') #starts writing into it (with append)
+csv_file = open("rec_csv3.csv", 'w').close() # FLISHINGA THE TARGET FILE
+csv_file = open("rec_csv3.csv", 'a') #starts writing into it (with append)
 
 while target_folder.__contains__('//'): # to avoid things like ///home//////root or anything like that
   target_folder = target_folder.replace('//','/')
