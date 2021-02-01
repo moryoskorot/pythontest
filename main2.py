@@ -12,14 +12,8 @@ import hashlib # for file hash
 # 21-Jan-21
 #####
 
-### 23-Jan
-# Fixed broken things
-# Cleaning up the code
-# Going to add a progress bar hopefull too
-###
-
+# a variable used to keep an index of the csv
 current_data_entry = 0
-
 
 def my_get_md5hash(object_path):
   try: # it checks to see if the target is a dir or a file
